@@ -33,6 +33,7 @@ var text1 = Titanium.UI.createTextField({
     top:10,
     left:10,
     width:250,
+    font:{fontSize:14,fontFamily:'Helvetica Neue'},
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
@@ -42,8 +43,17 @@ var text2 = Titanium.UI.createTextField({
     top:50,
     left:10,
     width:250,
+    font:{fontSize:14,fontFamily:'Helvetica Neue'},
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
+
+
+text1.addEventListener('return', function()
+{
+  text2.focus();
+});
+
+
 
 
 var btn1 = Titanium.UI.createButton({
@@ -60,8 +70,8 @@ btn1.addEventListener('click',function(e)
 {
 	
     result = parseFloat(text1.value) + parseFloat(text2.value);
-	alert('Rezultat je: ' + result.toString());	
-	label1.text = "Zadnji rezultat je: " + result.toString();
+	alert('Rezultat je: ' + String(result));	
+	label1.text = "Zadnji rezultat je: " + String(result);
 	
 });
 
