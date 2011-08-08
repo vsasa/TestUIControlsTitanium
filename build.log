@@ -6,11 +6,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.012708 seconds on emulator to get ready
+[DEBUG] waited 0.014313 seconds on emulator to get ready
 [DEBUG] test.com installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/bringout/Documents/Titanium Studio Workspace/TestUIControls/Resources/app.js => /Users/bringout/Documents/Titanium Studio Workspace/TestUIControls/build/android/bin/assets/Resources/app.js
+[TRACE] COPYING MODIFIED FILE: /Users/bringout/Documents/Titanium Studio Workspace/TestUIControls/Resources/math.js => /Users/bringout/Documents/Titanium Studio Workspace/TestUIControls/build/android/bin/assets/Resources/math.js
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/bringout/Documents/Titanium Studio Workspace/TestUIControls/Resources/android/images/res-long-land-hdpi/default.png

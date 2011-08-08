@@ -1,3 +1,5 @@
+Ti.include('math.js');
+
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
 
@@ -71,7 +73,8 @@ var result = 0.0;
 btn1.addEventListener('click',function(e)
 {
 	
-    result = parseFloat(text1.value) + parseFloat(text2.value);
+	result = saberi(text1.value, text2.value);
+    //result = parseFloat(text1.value) + parseFloat(text2.value);
 	alert('Rezultat je: ' + String(result));	
 	label1.text = "Zadnji rezultat je: " + String(result);
 	
