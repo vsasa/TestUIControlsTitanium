@@ -34,6 +34,7 @@ var text1 = Titanium.UI.createTextField({
     left:10,
     width:250,
     font:{fontSize:14,fontFamily:'Helvetica Neue'},
+    keyboardType: Titanium.UI.KEYBOARD_NUMBER_PAD,
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
@@ -44,6 +45,7 @@ var text2 = Titanium.UI.createTextField({
     left:10,
     width:250,
     font:{fontSize:14,fontFamily:'Helvetica Neue'},
+    keyboardType: Titanium.UI.KEYBOARD_NUMBER_PAD,
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
