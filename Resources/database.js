@@ -128,10 +128,10 @@ var pregled_tabele = Titanium.UI.createTableView({
 
 
 pregled_tabele.addEventListener('click', function(e) {
-	//Titanium.UI.createAlertDialog({
-		//title:'DB Test',
-		//message:'Trenutni zapis: ' + e.rowData.id + '-' + e.rowData.title + '-' + e.rowData.jmbg + '-' + e.rowData.koef
-	//}).show();
+	Titanium.UI.createAlertDialog({
+		title:'DB Test',
+		message:'Trenutni zapis: ' + e.rowData.id + ' - ' + e.rowData.title + ' - ' + e.rowData.jmbg + ' - ' + e.rowData.koef
+	}).show();
 });
 
 Titanium.UI.currentWindow.add(pregled_tabele);
