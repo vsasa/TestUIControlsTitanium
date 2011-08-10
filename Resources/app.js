@@ -1,7 +1,7 @@
 Ti.include('math.js');
 
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
+Titanium.UI.setBackgroundColor('#fff');
 
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
@@ -12,11 +12,11 @@ var tabGroup = Titanium.UI.createTabGroup();
 //
 var win1 = Titanium.UI.createWindow({  
     title:'Tab 1',
-    backgroundColor:'#fff'
+    backgroundColor:'#000'
 });
 var tab1 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
-    title:'Tab 1',
+    title:'UI kontrole',
     window:win1
 });
 
@@ -88,32 +88,19 @@ win1.add(text2);
 win1.add(btn1);
 
 
-
-
-
 //
 // create controls tab and root window
 //
 var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
-    backgroundColor:'#fff'
+    url:'database.js',
+    title:'Database',
+    backgroundColor:'#000'
 });
 var tab2 = Titanium.UI.createTab({  
     icon:'KS_nav_ui.png',
-    title:'Tab 2',
+    title:'DB test',
     window:win2
 });
-
-var label2 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 2',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
-});
-
-win2.add(label2);
-
 
 
 //
