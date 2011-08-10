@@ -3,6 +3,9 @@ var _name = '';
 var _koef = 0;
 var _jmbg = '';
 
+// odredi platformu...
+var isAndroid = Ti.Platform.osname == 'android';
+
 var db = Titanium.Database.open('bringout');
 db.execute('CREATE TABLE IF NOT EXISTS bringout (id INTEGER PRIMARY KEY, name TEXT, jmbg TEXT, koef INT)');
 
@@ -25,8 +28,11 @@ var btnSnimi = Titanium.UI.createButton({
 	height:35,
 	right:0,
 	top:5,
-	color:'red',
-	backgroundColor:'white',
+	color:'white',
+	backgroundColor:'black',
+	borderRadius:10,
+	borderColor:'white',
+	borderWidth:2,
 	enabled:false
 });
 kontrola.add(btnSnimi);
@@ -37,6 +43,7 @@ var tf_name = Titanium.UI.createTextField({
 	height:35,
 	left:0,
 	top:5,
+	font:{fontSize:12,fontFamily:'Helvetica Neue'},
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'naziv...'
@@ -47,6 +54,7 @@ var tf_jmbg = Titanium.UI.createTextField({
 	height:35,
 	left:0,
 	top:50,
+	font:{fontSize:12,fontFamily:'Helvetica Neue'},
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'jmbg...'
@@ -57,6 +65,7 @@ var tf_koef = Titanium.UI.createTextField({
 	height:35,
 	right:0,
 	top:50,	
+	font:{fontSize:12,fontFamily:'Helvetica Neue'},
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'koef...'
@@ -73,6 +82,15 @@ tf_jmbg.addEventListener('return', function() {
 
 tf_koef.addEventListener('return', function() {
 	tf_koef.blur();
+});
+
+tf_koef.addEventListener('click', function() {
+	
+	if (isAndroid) {
+		koef_dlg.androidView = null;
+	}
+	
+	koef_dlg.show();
 });
 
 
@@ -102,25 +120,53 @@ kontrola.add(tf_koef);
 pregled.add(kontrola);
 win2.add(kontrola);
 
-var podaci = [];
 
-//Get data for tableview
-var rows = db.execute('SELECT * FROM bringout');
-while (rows.isValidRow()) {
-  	podaci.push({ 
-  		title: rows.fieldByName('name'), hasChild:true,
-  		id: rows.fieldByName('id'), 
-  		jmbg: rows.fieldByName('jmbg'), 
-  		koef: rows.fieldByName('koef'), 
-  		color:'green' 
-  		});
-
-	rows.next();
+// koeficijent dijalog
+var koef_dlg_opt = {
+	options:['0.5', '1', '1.5', '2', '2.2', '2.3', '2.4', '5', '7'],
+	destructive:1,
+	cancel:2,
+	title:'odabir koeficijenta'
 };
+
+var koef_dlg = Titanium.UI.createOptionDialog(koef_dlg_opt);
+
+// add event listener
+koef_dlg.addEventListener('click',function(e)
+{
+	// setuj vrijednost u text field koeficijent
+	tf_koef.value = koef_dlg_opt.options[e.index];
+	
+});
+
+
+
+// funkcija za refresh baze...
+// učitava sve zapise sql tabele
+function refresh_data( oDb ){
+
+	var aData = [];
+	var rows = oDb.execute('SELECT * FROM bringout');
+	while (rows.isValidRow()) {
+  		aData.push({ 
+  			title: rows.fieldByName('name'), hasChild:true,
+  			id: rows.fieldByName('id'), 
+  			jmbg: rows.fieldByName('jmbg'), 
+  			koef: rows.fieldByName('koef'), 
+  			color:'green' 
+  			});
+
+		rows.next();
+	};
 rows.close();
+	
+return aData;
+};
+
 
 var pregled_tabele = Titanium.UI.createTableView({
-	data:podaci,
+	// odmah pri pokretanju tableview komponente učitaj stanje sql tabele
+	data:refresh_data( db ),
 	headerTitle:'pregled tabele',
 	allowsSelection:true,
 	top:90
@@ -128,26 +174,16 @@ var pregled_tabele = Titanium.UI.createTableView({
 
 
 pregled_tabele.addEventListener('click', function(e) {
-	Titanium.UI.createAlertDialog({
-		title:'DB Test',
-		message:'Trenutni zapis: ' + e.rowData.id + ' - ' + e.rowData.title + ' - ' + e.rowData.jmbg + ' - ' + e.rowData.koef
-	}).show();
+	alert('Trenutni zapis: ' + e.rowData.id + ' - ' + e.rowData.title + ' - ' + e.rowData.jmbg + ' - ' + e.rowData.koef);
 });
+
 
 Titanium.UI.currentWindow.add(pregled_tabele);
 
 btnSnimi.addEventListener("click", function(e) {
   if (btnSnimi.enabled) {
     db.execute('INSERT INTO bringout (name, jmbg, koef) VALUES(?,?,?)', _name, _jmbg, _koef );
-    var last = db.execute("SELECT * FROM bringout ORDER BY id DESC LIMIT 1");
-    pregled_tabele.appendRow({
-      title:last.fieldByName('name'),
-      jmbg:last.fieldByName('jmbg'),
-      koef:last.fieldByName('koef'),
-      id:last.fieldByName('id')
-    });
-    
-    last.close();
+    pregled_tabele.setData( refresh_data( db ) );
     
     _naziv = "";
     _jmbg = "";
