@@ -22,6 +22,7 @@ var kontrola = Ti.UI.createView({
   height:'auto'
 });
 
+
 var btnSnimi = Titanium.UI.createButton({
 	title:'Snimi',
 	width:180,
