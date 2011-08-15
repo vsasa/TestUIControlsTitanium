@@ -9,6 +9,7 @@ var isAndroid = Ti.Platform.osname == 'android';
 var db = Titanium.Database.open('bringout');
 db.execute('CREATE TABLE IF NOT EXISTS bringout (id INTEGER PRIMARY KEY, name TEXT, jmbg TEXT, koef INT)');
 
+
 //create data entry view
 var pregled = Ti.UI.createView({
   backgroundColor:'#0060AA',
