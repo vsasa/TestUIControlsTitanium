@@ -6,7 +6,6 @@ Titanium.UI.setBackgroundColor('#fff');
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
-
 //
 // create base UI tab and root window
 //
@@ -14,9 +13,11 @@ var win1 = Titanium.UI.createWindow({
     title:'Tab 1',
     backgroundColor:'#000'
 });
+
 var tab1 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
-    title:'UI kontrole',
+    title:'UI kontrole',        
+    font:{fontSize:25,fontFamily:'Helvetica Neue'},
     window:win1
 });
 
@@ -31,40 +32,49 @@ var label1 = Titanium.UI.createLabel({
 
 var text1 = Titanium.UI.createTextField({
 	color:'#336699',
-    height:35,
+    height:60,
     top:10,
     left:10,
     width:250,
-    font:{fontSize:14,fontFamily:'Helvetica Neue'},
-    keyboardType: Titanium.UI.KEYBOARD_NUMBER_PAD,
-    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+    font:{fontSize:20,fontFamily:'Helvetica Neue'},
+    keyboardType: Titanium.UI.KEYBOARD_NUMBER_PAD
+    //borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
 var text2 = Titanium.UI.createTextField({
 	color:'#336699',
-    height:35,
-    top:50,
+    height:60,
+    top:70,
     left:10,
     width:250,
-    font:{fontSize:14,fontFamily:'Helvetica Neue'},
-    keyboardType: Titanium.UI.KEYBOARD_NUMBER_PAD,
-    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+    font:{fontSize:20,fontFamily:'Helvetica Neue'},
+    keyboardType: Titanium.UI.KEYBOARD_NUMBER_PAD
+    //borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
 
 text1.addEventListener('return', function()
 {
+  text1.blur();
   text2.focus();
 });
 
+text2.addEventListener('return', function()
+{
+  text2.blur();
+});
 
 
 
 var btn1 = Titanium.UI.createButton({
 	title:'Saberi',
-	color:'#fff',
+	color:'white',
+	backgroundColor:'black',
+	borderRadius:10,
+	borderColor:'white',
+	borderWidth:2,
     width:200,
-    height:50,
+    height:60,
     left:20
 });
 
@@ -74,13 +84,10 @@ btn1.addEventListener('click',function(e)
 {
 	
 	result = saberi(text1.value, text2.value);
-    //result = parseFloat(text1.value) + parseFloat(text2.value);
-	alert('Rezultat je: ' + String(result));	
+    alert('Rezultat je: ' + String(result));	
 	label1.text = "Zadnji rezultat je: " + String(result);
 	
 });
-
-
 
 win1.add(label1);
 win1.add(text1);
@@ -98,6 +105,7 @@ var win2 = Titanium.UI.createWindow({
 });
 var tab2 = Titanium.UI.createTab({  
     icon:'KS_nav_ui.png',
+    font:{fontSize:25,fontFamily:'Helvetica Neue'},
     title:'DB test',
     window:win2
 });

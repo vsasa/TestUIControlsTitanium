@@ -13,20 +13,20 @@ db.execute('CREATE TABLE IF NOT EXISTS bringout (id INTEGER PRIMARY KEY, name TE
 var pregled = Ti.UI.createView({
   backgroundColor:'#0060AA',
   width:'100%',
-  height:50,
+  height:100,
   top:0
 });
 
 var kontrola = Ti.UI.createView({
-  width:270,
+  width:470,
   height:'auto'
 });
 
 var btnSnimi = Titanium.UI.createButton({
 	title:'Snimi',
-	width:60,
-	height:35,
-	right:0,
+	width:180,
+	height:60,
+	right:20,
 	top:5,
 	color:'white',
 	backgroundColor:'black',
@@ -39,34 +39,34 @@ kontrola.add(btnSnimi);
 
 
 var tf_name = Titanium.UI.createTextField({
-	width:200,
-	height:35,
+	width:250,
+	height:60,
 	left:0,
 	top:5,
-	font:{fontSize:12,fontFamily:'Helvetica Neue'},
-	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	//borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'naziv...'
 });
 
 var tf_jmbg = Titanium.UI.createTextField({
-	width:150,	
-	height:35,
+	width:250,	
+	height:60,
 	left:0,
-	top:50,
-	font:{fontSize:12,fontFamily:'Helvetica Neue'},
-	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	top:70,
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	//borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'jmbg...'
 });
 
 var tf_koef = Titanium.UI.createTextField({
 	width:100,
-	height:35,
-	right:0,
-	top:50,	
-	font:{fontSize:12,fontFamily:'Helvetica Neue'},
-	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	height:60,
+	right:100,
+	top:70,	
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	//borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'koef...'
 });
@@ -89,7 +89,7 @@ tf_koef.addEventListener('click', function() {
 	if (isAndroid) {
 		koef_dlg.androidView = null;
 	}
-	
+	tf_koef.blur();
 	koef_dlg.show();
 });
 
@@ -169,7 +169,7 @@ var pregled_tabele = Titanium.UI.createTableView({
 	data:refresh_data( db ),
 	headerTitle:'pregled tabele',
 	allowsSelection:true,
-	top:90
+	top:170
 });
 
 
