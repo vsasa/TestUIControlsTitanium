@@ -86,6 +86,7 @@ tf_koef.addEventListener('return', function() {
 	tf_koef.blur();
 });
 
+
 tf_koef.addEventListener('click', function() {
 	
 	if (isAndroid) {

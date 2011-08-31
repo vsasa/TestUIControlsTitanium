@@ -1,0 +1,54 @@
+html,body {margin:0;padding:0;}
+
+#app { 
+	height:100%;
+	display: -webkit-box;
+        -webkit-box-orient: vertical;
+	-webkit-box-align:stretch;
+}
+
+#header { 
+	height:50px; 
+	background-color:#cdcdcd;
+}
+
+#footer { 
+	height:30px; 
+	background-color:#cdcdcd;
+}
+
+#content {
+	-webkit-box-flex:1;
+	display: -webkit-box;
+        -webkit-box-orient: horizontal;
+	-webkit-box-align:stretch;
+}
+
+#sidebar { 
+	width:120px; 
+	background-color:#676767;
+}
+
+#main {
+	-webkit-box-flex:1;
+	background-color:green;
+}
+
+.val1 {
+    border: 1px solid #006;
+    background: #ffc;
+}
+
+.val2 {
+    border: 1px solid #006;
+    background: #ffc;
+}
+
+.btn1 {
+    border: 1px solid #006;
+    background: #9cf;
+}
+
+.result {
+    border: 1px solid #006;
+}

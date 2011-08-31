@@ -111,12 +111,30 @@ var tab2 = Titanium.UI.createTab({
 });
 
 
+var win3 = Titanium.UI.createWindow({  
+    title:'Tab 3',
+    backgroundColor:'#000'
+});
+
+var web = Titanium.UI.createWebView({
+	url:'index.html'
+});
+
+win3.add(web);
+
+var tab3 = Titanium.UI.createTab({  
+    icon:'KS_nav_views.png',
+    title:'test HTML',        
+    font:{fontSize:25,fontFamily:'Helvetica Neue'},
+    window:win3
+});
+
 //
 //  add tabs
 //
 tabGroup.addTab(tab1);  
 tabGroup.addTab(tab2);  
-
+tabGroup.addTab(tab3);
 
 // open tab group
 tabGroup.open();
