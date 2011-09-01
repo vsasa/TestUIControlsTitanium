@@ -129,12 +129,28 @@ var tab3 = Titanium.UI.createTab({
     window:win3
 });
 
+
+var win4 = Titanium.UI.createWindow({  
+    url:'grid.js',
+    title:'Database',
+    backgroundColor:'#000'
+});
+
+
+var tab4 = Titanium.UI.createTab({  
+    icon:'KS_nav_views.png',
+    title:'test grid',        
+    font:{fontSize:25,fontFamily:'Helvetica Neue'},
+    window:win4
+});
+
 //
 //  add tabs
 //
 tabGroup.addTab(tab1);  
 tabGroup.addTab(tab2);  
 tabGroup.addTab(tab3);
+tabGroup.addTab(tab4);
 
 // open tab group
 tabGroup.open();
