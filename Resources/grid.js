@@ -8,7 +8,8 @@ var xGrid = 4;
 var yGrid = 3;
  
 var tableData = [];
- 
+var labels = [];
+
 var colorSet = [
                 "#D44646",
                 "#46D463",
@@ -55,6 +56,7 @@ for (var y=0; y<yGrid; y++){
         thisRow.add(thisView);
         cellIndex++;
         colorSetIndex++;
+        labels.push(thisLabel);
  
         if( colorSetIndex === colorSet.length ){
             colorSetIndex = 0;
@@ -72,19 +74,11 @@ tableview.addEventListener("click", function(e){
     }
 });
  
-//tableview.addEventListener("dblclick", function(e){
-  //  if(e.source.objName){
-    //    alert("---> " + e.source.objName+e.source.objIndex + " was clicked!");
-        
-    //}
-//});
- 
-thisLabel.addEventListener("dblclick", function(e){
-    if(e.source.objName){
-        alert("---> " + e.source.objName+e.source.objIndex + " was clicked!");
-        
-    }
+tableview.addEventListener("dblclick", function(e){
+    alert( labels[e.source.objIndex].objName+labels[e.source.objIndex].objIndex );
+    labels[e.source.objIndex].text = "test";
 });
+ 
   
  
 Titanium.UI.currentWindow.add(tableview);

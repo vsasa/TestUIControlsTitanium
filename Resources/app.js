@@ -144,6 +144,21 @@ var tab4 = Titanium.UI.createTab({
     window:win4
 });
 
+var win5 = Titanium.UI.createWindow({  
+    url:'login.js',
+    tabBarHidden:true,
+    title:'Login form'
+});
+
+
+var tab5 = Titanium.UI.createTab({  
+    icon:'KS_nav_views.png',
+    title:'login',        
+    font:{fontSize:25,fontFamily:'Helvetica Neue'},
+    window:win5
+});
+
+
 //
 //  add tabs
 //
@@ -151,6 +166,8 @@ tabGroup.addTab(tab1);
 tabGroup.addTab(tab2);  
 tabGroup.addTab(tab3);
 tabGroup.addTab(tab4);
+tabGroup.addTab(tab5);
+
 
 // open tab group
 tabGroup.open();
