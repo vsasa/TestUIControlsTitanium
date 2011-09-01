@@ -147,9 +147,13 @@ var tab4 = Titanium.UI.createTab({
 var win5 = Titanium.UI.createWindow({  
     url:'login.js',
     tabBarHidden:true,
+    loginSuccess:0,
     title:'Login form'
 });
 
+if (win5.loginSuccess == 0 ) {
+	alert("xxxxx");
+};
 
 var tab5 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',

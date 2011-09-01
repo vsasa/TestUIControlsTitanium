@@ -50,13 +50,18 @@ loginBtn.addEventListener('click',function(e)
     	    
     	    if ( loginObj[i].name == username.value && loginObj[i].pwd == password.value) { 
     	    	alert("Login ok");
+    	    	Titanium.UI.currentWindow.loginSuccess = 0;
     	    	return;	  	
     	    };
     	};
     	alert("Username/Password not correct!");    	
+    	Titanium.UI.currentWindow.loginSuccess = 1;
+    	return;
     }  
     else  
     {  
         alert("Username/Password are required");  
+        Titanium.UI.currentWindow.loginSuccess = 1;
+        return;
     }  
 });  
